@@ -28,8 +28,8 @@ const module = (id, title, lessons) => ({ id, title, lessons });
 export const courses = [
   // ================= FRESHMAN (FREE) =================
   {
-    id: 'fresh-eng',
-    title: 'Communicative English Skills',
+    id: 'fresh-eng-1',
+    title: 'Communicative English Language Skills I',
     code: 'FLEn 1011',
     year: 'freshman',
     department: 'general',
@@ -67,8 +67,8 @@ export const courses = [
     ],
   },
   {
-    id: 'fresh-math',
-    title: 'Mathematics for Natural Sciences',
+    id: 'fresh-math-ns',
+    title: 'Mathematics for Natural Science',
     code: 'Math 1011',
     year: 'freshman',
     department: 'natural',
@@ -139,8 +139,8 @@ export const courses = [
   },
   {
     id: 'fresh-critical',
-    title: 'Critical Thinking',
-    code: 'Phil 1011',
+    title: 'Critical Thinking (Logic)',
+    code: 'LoCT 1011',
     year: 'freshman',
     department: 'social',
     access: 'free',
@@ -228,7 +228,7 @@ export const courses = [
   },
   {
     id: 'fresh-civics',
-    title: 'Moral & Civics Education',
+    title: 'Moral and Civics Education',
     code: 'MCiE 1012',
     year: 'freshman',
     department: 'social',
@@ -247,6 +247,332 @@ export const courses = [
     modules: [
       module('m1', 'Ethics & Citizenship', [
         lesson('l1', 'What is Ethics?', 'u399XmGC0mY'),
+      ]),
+    ],
+  },
+  {
+    id: 'fresh-eng-2',
+    title: 'Communicative English Language Skills II',
+    code: 'FLEn 1012',
+    year: 'freshman',
+    department: 'general',
+    access: 'free',
+    level: 'Freshman',
+    instructor: 'Dr. Selamawit Tesfaye',
+    students: 9620,
+    rating: 4.8,
+    hours: 32,
+    thumbnail:
+      'https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=1200&q=60',
+    tagline: 'Advanced academic communication — argue, debate, publish.',
+    description:
+      'A continuation of FLEn 1011 focused on advanced writing, research reports, formal presentations and group discussion.',
+    outcomes: [
+      'Write research-style reports',
+      'Deliver formal presentations',
+      'Lead academic discussions',
+      'Refine grammar and style',
+    ],
+    modules: [
+      module('m1', 'Advanced Writing', [
+        lesson('l1', 'Research Reports', 'jS4aFq5-91M'),
+        lesson('l2', 'Argumentative Essays', 'SqcY0GlETPk'),
+      ]),
+      module('m2', 'Speaking & Debate', [
+        lesson('l3', 'Formal Presentations', 'Unzc731iCUY'),
+      ]),
+    ],
+  },
+  {
+    id: 'fresh-psych',
+    title: 'General Psychology',
+    code: 'Psyc 1011',
+    year: 'freshman',
+    department: 'social',
+    access: 'free',
+    level: 'Freshman',
+    instructor: 'Dr. Meron Gebremedhin',
+    students: 7980,
+    rating: 4.7,
+    hours: 24,
+    thumbnail:
+      'https://images.unsplash.com/photo-1544027993-37dbfe43562a?auto=format&fit=crop&w=1200&q=60',
+    tagline: 'Understand how humans think, feel and behave.',
+    description:
+      'Foundations of psychology: biological bases, learning, memory, personality, motivation and mental health.',
+    outcomes: ['Explain major theories', 'Understand cognition & emotion', 'Apply psychology to daily life'],
+    modules: [
+      module('m1', 'Foundations', [
+        lesson('l1', 'What is Psychology?', 'vo2mR4g7YFE'),
+      ]),
+      module('m2', 'Cognition & Learning', [
+        lesson('l2', 'Memory & Learning', 'NHBR3udCLDs'),
+      ]),
+    ],
+  },
+  {
+    id: 'fresh-history',
+    title: 'History of Ethiopia and the Horn',
+    code: 'Hist 1012',
+    year: 'freshman',
+    department: 'social',
+    access: 'free',
+    level: 'Freshman',
+    instructor: 'Dr. Tesfaye Lemma',
+    students: 6420,
+    rating: 4.8,
+    hours: 26,
+    thumbnail:
+      'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1200&q=60',
+    tagline: 'From ancient Aksum to modern Ethiopia.',
+    description:
+      'Ancient, medieval and modern history of Ethiopia and the Horn — states, peoples, economy and foreign relations.',
+    outcomes: ['Trace state formation', 'Explain social change', 'Evaluate primary sources'],
+    modules: [
+      module('m1', 'Ancient & Medieval', [
+        lesson('l1', 'The Aksumite Civilization', 'DDqEPVWXr-4'),
+      ]),
+      module('m2', 'Modern Ethiopia', [
+        lesson('l2', '19th & 20th Century', 'pY4qpP7vbKc'),
+      ]),
+    ],
+  },
+  {
+    id: 'fresh-fitness',
+    title: 'Physical Fitness and Health',
+    code: 'SpSc 1011',
+    year: 'freshman',
+    department: 'general',
+    access: 'free',
+    level: 'Freshman',
+    instructor: 'Mr. Dawit Lemma',
+    students: 5100,
+    rating: 4.6,
+    hours: 16,
+    thumbnail:
+      'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1200&q=60',
+    tagline: 'Build a healthier body and a sharper mind.',
+    description:
+      'Physical activity, nutrition, wellness and lifestyle for university students — practical and theory-based.',
+    outcomes: ['Plan a workout routine', 'Understand nutrition basics', 'Improve long-term health'],
+    modules: [
+      module('m1', 'Fitness Foundations', [
+        lesson('l1', 'Warm-up & Cool-down', 'ml6cT4AZdqI'),
+      ]),
+      module('m2', 'Healthy Living', [
+        lesson('l2', 'Nutrition 101', 'yumRqy0lj2w'),
+      ]),
+    ],
+  },
+  {
+    id: 'fresh-anthro',
+    title: 'Social Anthropology',
+    code: 'Anth 1012',
+    year: 'freshman',
+    department: 'social',
+    access: 'free',
+    level: 'Freshman',
+    instructor: 'Dr. Liya Mengistu',
+    students: 4280,
+    rating: 4.7,
+    hours: 20,
+    thumbnail:
+      'https://images.unsplash.com/photo-1532635241-17e820acc59f?auto=format&fit=crop&w=1200&q=60',
+    tagline: 'Explore culture, society and human diversity.',
+    description:
+      'Key concepts of social anthropology: culture, kinship, religion, ethnicity and contemporary social issues.',
+    outcomes: ['Define culture & society', 'Analyze kinship systems', 'Apply anthropological thinking'],
+    modules: [
+      module('m1', 'Culture & Society', [
+        lesson('l1', 'What is Anthropology?', 'VoEb4d-SE2w'),
+      ]),
+    ],
+  },
+  {
+    id: 'fresh-inclusiveness',
+    title: 'Inclusiveness',
+    code: 'SNIE 1012',
+    year: 'freshman',
+    department: 'social',
+    access: 'free',
+    level: 'Freshman',
+    instructor: 'Dr. Hiwot Asrat',
+    students: 3960,
+    rating: 4.6,
+    hours: 16,
+    thumbnail:
+      'https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=1200&q=60',
+    tagline: 'Build a learning culture that welcomes everyone.',
+    description:
+      'Understand disability, special needs and inclusive education — policies, practice and social attitudes.',
+    outcomes: ['Apply inclusive language', 'Design accessible activities', 'Challenge bias and stigma'],
+    modules: [
+      module('m1', 'Foundations of Inclusiveness', [
+        lesson('l1', 'Inclusive Education', 'X4Wm9ynjFxE'),
+      ]),
+    ],
+  },
+  {
+    id: 'fresh-chemistry',
+    title: 'General Chemistry',
+    code: 'Chem 1011',
+    year: 'freshman',
+    department: 'natural',
+    access: 'free',
+    level: 'Freshman',
+    instructor: 'Dr. Hailemariam Girma',
+    students: 7180,
+    rating: 4.7,
+    hours: 36,
+    thumbnail:
+      'https://images.unsplash.com/photo-1554475901-4538ddfbccc2?auto=format&fit=crop&w=1200&q=60',
+    tagline: 'Matter, reactions and the periodic table.',
+    description:
+      'Atomic structure, periodic trends, chemical bonding, stoichiometry, thermochemistry and introductory organic chemistry.',
+    outcomes: ['Balance reactions', 'Predict bonding', 'Solve stoichiometry', 'Interpret periodic trends'],
+    modules: [
+      module('m1', 'Atoms & Bonds', [
+        lesson('l1', 'Atomic Structure', 'FSyAehMdpyI'),
+        lesson('l2', 'Periodic Table', '0RRVV4Diomg'),
+      ]),
+      module('m2', 'Reactions', [
+        lesson('l3', 'Stoichiometry', 'ZSXjCE8Ri7g'),
+      ]),
+    ],
+  },
+  {
+    id: 'fresh-biology',
+    title: 'General Biology',
+    code: 'Biol 1011',
+    year: 'freshman',
+    department: 'natural',
+    access: 'free',
+    level: 'Freshman',
+    instructor: 'Dr. Martha Teshome',
+    students: 6540,
+    rating: 4.7,
+    hours: 34,
+    thumbnail:
+      'https://images.unsplash.com/photo-1530026186672-2cd00ffc50fe?auto=format&fit=crop&w=1200&q=60',
+    tagline: 'Life, from cells to ecosystems.',
+    description:
+      'Cells, genetics, evolution, diversity of life and ecology — a complete freshman biology course.',
+    outcomes: ['Describe cell structure', 'Explain inheritance', 'Interpret ecological data'],
+    modules: [
+      module('m1', 'The Cell', [
+        lesson('l1', 'Cell Structure', 'URUJD5NEXC8'),
+      ]),
+      module('m2', 'Genetics', [
+        lesson('l2', 'DNA & Genes', '8m6hHRlKwxY'),
+      ]),
+    ],
+  },
+  {
+    id: 'fresh-math-ss',
+    title: 'Mathematics for Social Science',
+    code: 'Math 1012',
+    year: 'freshman',
+    department: 'social',
+    access: 'free',
+    level: 'Freshman',
+    instructor: 'Dr. Abebe Bekele',
+    students: 5240,
+    rating: 4.6,
+    hours: 32,
+    thumbnail:
+      'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=1200&q=60',
+    tagline: 'Numbers, graphs and models for social science students.',
+    description:
+      'Functions, matrices, probability and statistics designed for economics, business and social science programs.',
+    outcomes: ['Use functions in economics', 'Work with matrices', 'Apply basic statistics'],
+    modules: [
+      module('m1', 'Functions & Equations', [
+        lesson('l1', 'Linear Models', 'ZK3O402wf1c'),
+      ]),
+      module('m2', 'Statistics', [
+        lesson('l2', 'Descriptive Statistics', 'MXaJ7sa7q-8'),
+      ]),
+    ],
+  },
+  {
+    id: 'fresh-econ',
+    title: 'Introduction to Economics',
+    code: 'Econ 1011',
+    year: 'freshman',
+    department: 'business',
+    access: 'free',
+    level: 'Freshman',
+    instructor: 'Dr. Samuel Hailu',
+    students: 5880,
+    rating: 4.7,
+    hours: 28,
+    thumbnail:
+      'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=1200&q=60',
+    tagline: 'How people, firms and nations make choices.',
+    description:
+      'Microeconomic decisions, market structures, macro indicators, inflation, unemployment and growth.',
+    outcomes: ['Read supply & demand curves', 'Explain GDP & inflation', 'Evaluate policy basics'],
+    modules: [
+      module('m1', 'Microeconomics', [
+        lesson('l1', 'Supply & Demand', 'g2uJyuu-ubw'),
+      ]),
+      module('m2', 'Macroeconomics', [
+        lesson('l2', 'GDP & Inflation', 'q5Edef_m6Sg'),
+      ]),
+    ],
+  },
+  {
+    id: 'fresh-global',
+    title: 'Global Trends',
+    code: 'GlTr 1012',
+    year: 'freshman',
+    department: 'social',
+    access: 'free',
+    level: 'Freshman',
+    instructor: 'Dr. Fikru Alemayehu',
+    students: 4860,
+    rating: 4.7,
+    hours: 22,
+    thumbnail:
+      'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=60',
+    tagline: 'Understand globalization, diplomacy and world affairs.',
+    description:
+      'Theories of international relations, globalization, regionalism, global governance and Ethiopia\u2019s foreign policy.',
+    outcomes: ['Interpret global events', 'Compare IR theories', 'Analyze foreign policy'],
+    modules: [
+      module('m1', 'International Relations', [
+        lesson('l1', 'Theories of IR', 'mI2PCUNLZAU'),
+      ]),
+      module('m2', 'Globalization', [
+        lesson('l2', 'Globalization Explained', 'JJ0nFD19eT8'),
+      ]),
+    ],
+  },
+  {
+    id: 'fresh-entre',
+    title: 'Entrepreneurship',
+    code: 'MGMT 1012',
+    year: 'freshman',
+    department: 'business',
+    access: 'free',
+    level: 'Freshman',
+    instructor: 'Mrs. Bethlehem Tilahun',
+    students: 6240,
+    rating: 4.8,
+    hours: 26,
+    thumbnail:
+      'https://images.unsplash.com/photo-1556740738-b6a63e27c4df?auto=format&fit=crop&w=1200&q=60',
+    tagline: 'Turn your ideas into a real business.',
+    description:
+      'Opportunity discovery, business models, market validation, startup finance and pitching for freshman students.',
+    outcomes: ['Spot opportunities', 'Build a lean business model', 'Pitch your idea with confidence'],
+    modules: [
+      module('m1', 'From Idea to Startup', [
+        lesson('l1', 'Entrepreneurial Mindset', 'ZoqgAy3h4OM'),
+        lesson('l2', 'Business Model Canvas', 'QoAOzMTLP5s'),
+      ]),
+      module('m2', 'Launch', [
+        lesson('l3', 'Pitching Your Idea', 'Th8JoIan4dg'),
       ]),
     ],
   },
