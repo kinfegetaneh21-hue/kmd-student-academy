@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kinfegetaneh21-hue.github.io/kmd-student-academy/sitemap.xml
