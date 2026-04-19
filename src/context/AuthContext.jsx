@@ -9,8 +9,8 @@ import { createContext, useContext, useEffect, useMemo, useState, useCallback } 
 
 const AuthContext = createContext(null);
 
-const STORAGE_KEY = 'kmd-auth-v1';
-const USERS_KEY = 'kmd-users-v1';
+const STORAGE_KEY = 'kmd-auth-v2';
+const USERS_KEY = 'kmd-users-v2';
 
 const DEFAULT_USERS = [
   {
@@ -41,6 +41,7 @@ const DEFAULT_USERS = [
     role: 'premium',
     year: 'year3',
     plan: 'standard',
+    premiumActive: true,
     avatar: 'https://i.pravatar.cc/100?img=47',
   },
 ];
@@ -166,7 +167,9 @@ export function AuthProvider({ children }) {
       role: user ? user.role : 'guest',
       isAuthenticated: Boolean(user),
       isAdmin: user?.role === 'admin',
-      isPremium: user?.role === 'premium' || user?.role === 'admin',
+      isPremium:
+        user?.role === 'admin' ||
+        (user?.role === 'premium' && user?.premiumActive === true),
       isFreshman: user?.role === 'freshman',
       login,
       signup,
