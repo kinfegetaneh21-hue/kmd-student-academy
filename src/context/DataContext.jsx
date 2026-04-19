@@ -10,7 +10,7 @@ import { plans as seedPlans } from '../data/plans.js';
  */
 
 const DataContext = createContext(null);
-const KEY = 'kmd-data-v1';
+const KEY = 'kmd-data-v2';
 
 function load() {
   try {
@@ -26,6 +26,7 @@ export function DataProvider({ children }) {
   const initial = load();
   const [courses, setCourses] = useState(initial?.courses || seedCourses);
   const [videos, setVideos] = useState(initial?.videos || seedVideos);
+  const [files, setFiles] = useState(initial?.files || []);
   const [announcements, setAnnouncements] = useState(initial?.announcements || seedAnnouncements);
   const [plans, setPlans] = useState(initial?.plans || seedPlans);
   const [enrollments, setEnrollments] = useState(initial?.enrollments || {});
@@ -34,9 +35,9 @@ export function DataProvider({ children }) {
   useEffect(() => {
     localStorage.setItem(
       KEY,
-      JSON.stringify({ courses, videos, announcements, plans, enrollments, progress })
+      JSON.stringify({ courses, videos, files, announcements, plans, enrollments, progress })
     );
-  }, [courses, videos, announcements, plans, enrollments, progress]);
+  }, [courses, videos, files, announcements, plans, enrollments, progress]);
 
   // ---- Courses ----
   const addCourse = useCallback((c) => setCourses((list) => [c, ...list]), []);
@@ -135,6 +136,13 @@ export function DataProvider({ children }) {
     []
   );
 
+  // ---- Files ----
+  const addFile = useCallback((f) => setFiles((list) => [f, ...list]), []);
+  const removeFile = useCallback(
+    (id) => setFiles((list) => list.filter((f) => f.id !== id)),
+    []
+  );
+
   // ---- Announcements ----
   const addAnnouncement = useCallback((a) => setAnnouncements((list) => [a, ...list]), []);
   const removeAnnouncement = useCallback(
@@ -177,6 +185,7 @@ export function DataProvider({ children }) {
     () => ({
       courses,
       videos,
+      files,
       announcements,
       plans,
       enrollments,
@@ -191,6 +200,8 @@ export function DataProvider({ children }) {
       addVideo,
       updateVideo,
       removeVideo,
+      addFile,
+      removeFile,
       addAnnouncement,
       removeAnnouncement,
       updatePlan,
@@ -201,6 +212,7 @@ export function DataProvider({ children }) {
     [
       courses,
       videos,
+      files,
       announcements,
       plans,
       enrollments,
@@ -215,6 +227,8 @@ export function DataProvider({ children }) {
       addVideo,
       updateVideo,
       removeVideo,
+      addFile,
+      removeFile,
       addAnnouncement,
       removeAnnouncement,
       updatePlan,

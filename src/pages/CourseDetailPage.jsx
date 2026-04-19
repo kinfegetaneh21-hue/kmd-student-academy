@@ -23,7 +23,7 @@ import { lessonsOfCourse } from '../data/courses';
 
 export default function CourseDetailPage() {
   const { id } = useParams();
-  const { courses, enroll, markLessonWatched } = useData();
+  const { courses, videos, files, enroll, markLessonWatched } = useData();
   const { user, isAuthenticated, isPremium } = useAuth();
   const course = courses.find((c) => c.id === id);
   const [activeLesson, setActiveLesson] = useState(null);
@@ -31,6 +31,14 @@ export default function CourseDetailPage() {
 
   const lessons = useMemo(() => (course ? lessonsOfCourse(course) : []), [course]);
   const current = activeLesson || lessons[0];
+  const adminVideos = useMemo(
+    () => (course ? videos.filter((v) => v.courseId === course.id) : []),
+    [videos, course]
+  );
+  const adminFiles = useMemo(
+    () => (course ? files.filter((f) => f.courseId === course.id) : []),
+    [files, course]
+  );
 
   if (!course) {
     return (
@@ -178,6 +186,82 @@ export default function CourseDetailPage() {
               );
             })}
           </div>
+
+          {(adminVideos.length > 0 || adminFiles.length > 0) && (
+            <div className="mt-10">
+              <h2 className="font-display text-2xl font-extrabold text-slate-900 dark:text-white">
+                Added by your instructors
+              </h2>
+              <p className="mt-1 text-sm text-slate-500">
+                Extra videos and files uploaded by admin for this course.
+              </p>
+
+              {adminVideos.length > 0 && (
+                <div className="mt-4 grid gap-4 sm:grid-cols-2">
+                  {adminVideos.map((v) => (
+                    <button
+                      key={v.id}
+                      onClick={() =>
+                        !locked &&
+                        play({
+                          id: v.id,
+                          title: v.title,
+                          youtubeId: v.youtubeId,
+                          duration: v.duration || '—',
+                          notes: [],
+                          files: [],
+                        })
+                      }
+                      className="card overflow-hidden text-left transition hover:-translate-y-0.5 hover:shadow-lg"
+                    >
+                      <div className="relative aspect-video">
+                        <img
+                          src={`https://img.youtube.com/vi/${v.youtubeId}/mqdefault.jpg`}
+                          alt=""
+                          className="h-full w-full object-cover"
+                        />
+                        <div className="absolute inset-0 flex items-center justify-center bg-slate-950/30">
+                          <PlayCircle className="h-10 w-10 text-white" />
+                        </div>
+                      </div>
+                      <div className="p-4">
+                        <div className="flex items-center gap-2">
+                          <Badge variant={v.access === 'free' ? 'success' : 'accent'}>{v.access}</Badge>
+                          {v.tag && <Badge variant="slate">{v.tag}</Badge>}
+                        </div>
+                        <div className="mt-2 truncate font-semibold text-slate-900 dark:text-white">{v.title}</div>
+                        {v.description && (
+                          <div className="mt-1 line-clamp-2 text-xs text-slate-500">{v.description}</div>
+                        )}
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              )}
+
+              {adminFiles.length > 0 && (
+                <ul className="mt-4 divide-y divide-slate-200 rounded-2xl border border-slate-200 bg-white dark:divide-slate-800 dark:border-slate-800 dark:bg-slate-950">
+                  {adminFiles.map((f) => (
+                    <li key={f.id} className="flex items-center gap-4 p-4">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent-50 text-accent-600 dark:bg-accent-950 dark:text-accent-300">
+                        <FileText className="h-5 w-5" />
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <div className="truncate text-sm font-semibold text-slate-900 dark:text-white">{f.title}</div>
+                        <div className="text-xs text-slate-500">
+                          {f.size} · {(f.type || 'pdf').toUpperCase()}
+                        </div>
+                      </div>
+                      <Badge variant={f.access === 'free' ? 'success' : 'accent'}>{f.access}</Badge>
+                      <button className="btn-ghost !px-2 !py-1 text-xs">
+                        <Download className="h-3.5 w-3.5" />
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          )}
         </div>
 
         <aside className="space-y-4 lg:col-span-4">
