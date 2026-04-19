@@ -48,6 +48,83 @@ export function DataProvider({ children }) {
     []
   );
 
+  // Deep-mutation helpers for course → module → lesson → files/notes.
+  const addModule = useCallback((courseId, moduleData) => {
+    const mod = { id: `mod-${Date.now()}`, lessons: [], ...moduleData };
+    setCourses((list) =>
+      list.map((c) => (c.id === courseId ? { ...c, modules: [...(c.modules || []), mod] } : c))
+    );
+  }, []);
+
+  const addLesson = useCallback((courseId, moduleId, lessonData) => {
+    const les = {
+      id: `les-${Date.now()}`,
+      duration: '12:40',
+      notes: [],
+      files: [],
+      videoUrl: null,
+      youtubeId: null,
+      ...lessonData,
+    };
+    setCourses((list) =>
+      list.map((c) =>
+        c.id !== courseId
+          ? c
+          : {
+              ...c,
+              modules: (c.modules || []).map((m) =>
+                m.id !== moduleId ? m : { ...m, lessons: [...(m.lessons || []), les] }
+              ),
+            }
+      )
+    );
+  }, []);
+
+  const addLessonFile = useCallback((courseId, moduleId, lessonId, fileData) => {
+    const file = { id: `file-${Date.now()}`, ...fileData };
+    setCourses((list) =>
+      list.map((c) =>
+        c.id !== courseId
+          ? c
+          : {
+              ...c,
+              modules: (c.modules || []).map((m) =>
+                m.id !== moduleId
+                  ? m
+                  : {
+                      ...m,
+                      lessons: (m.lessons || []).map((l) =>
+                        l.id !== lessonId ? l : { ...l, files: [...(l.files || []), file] }
+                      ),
+                    }
+              ),
+            }
+      )
+    );
+  }, []);
+
+  const updateLesson = useCallback((courseId, moduleId, lessonId, patch) => {
+    setCourses((list) =>
+      list.map((c) =>
+        c.id !== courseId
+          ? c
+          : {
+              ...c,
+              modules: (c.modules || []).map((m) =>
+                m.id !== moduleId
+                  ? m
+                  : {
+                      ...m,
+                      lessons: (m.lessons || []).map((l) =>
+                        l.id !== lessonId ? l : { ...l, ...patch }
+                      ),
+                    }
+              ),
+            }
+      )
+    );
+  }, []);
+
   // ---- Videos ----
   const addVideo = useCallback((v) => setVideos((list) => [v, ...list]), []);
   const updateVideo = useCallback((video) => {
@@ -107,6 +184,10 @@ export function DataProvider({ children }) {
       addCourse,
       updateCourse,
       removeCourse,
+      addModule,
+      addLesson,
+      addLessonFile,
+      updateLesson,
       addVideo,
       updateVideo,
       removeVideo,
@@ -127,6 +208,10 @@ export function DataProvider({ children }) {
       addCourse,
       updateCourse,
       removeCourse,
+      addModule,
+      addLesson,
+      addLessonFile,
+      updateLesson,
       addVideo,
       updateVideo,
       removeVideo,

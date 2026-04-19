@@ -3,6 +3,7 @@ import {
   ShieldCheck,
   LayoutDashboard,
   BookOpen,
+  FolderOpen,
   Users,
   Upload,
   FileUp,
@@ -27,6 +28,7 @@ import cn from '../utils/cn';
 const items = [
   { to: '/admin', label: 'Overview', icon: LayoutDashboard, end: true },
   { to: '/admin/courses', label: 'Courses', icon: BookOpen },
+  { to: '/admin/course-content', label: 'Course Content', icon: FolderOpen },
   { to: '/admin/students', label: 'Students', icon: Users },
   { to: '/admin/upload-videos', label: 'Upload Videos', icon: Upload },
   { to: '/admin/upload-files', label: 'Upload Files', icon: FileUp },
