@@ -9,14 +9,18 @@ export default function ContinueLearningPage() {
   const { courses } = useData();
   const { isPremium } = useAuth();
   const visible = isPremium ? courses : courses.filter((c) => c.year === 'freshman');
-  const items = visible.slice(0, 6).map((c, i) => {
-    const lessons = lessonsOfCourse(c);
-    return {
-      course: c,
-      lesson: lessons[0],
-      progress: [15, 32, 48, 60, 75, 88][i % 6],
-    };
-  });
+  const items = visible
+    .slice(0, 6)
+    .map((c, i) => {
+      const lessons = lessonsOfCourse(c);
+      if (lessons.length === 0) return null;
+      return {
+        course: c,
+        lesson: lessons[0],
+        progress: [15, 32, 48, 60, 75, 88][i % 6],
+      };
+    })
+    .filter(Boolean);
 
   return (
     <div>
