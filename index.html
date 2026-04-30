@@ -2,11 +2,60 @@
 <html lang="en" class="h-full">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <link rel="icon" type="image/svg+xml" href="./logo.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="KMD Student Academy — a modern Ethiopian LMS for freshman (free) and 2nd–7th year (premium) university students." />
     <meta name="theme-color" content="#1f6bf0" />
-    <title>KMD Student Academy — Learn Smarter</title>
+
+    <title>KMD Student Academy — Ethiopian University LMS for Freshman & Premium Courses</title>
+    <meta name="description" content="KMD Student Academy is a modern Ethiopian learning platform with free freshman courses and premium 2nd–7th year video tutorials, notes, quizzes, and downloads for university students." />
+    <meta name="keywords" content="KMD Student Academy, Ethiopian university, freshman courses, LMS Ethiopia, online learning Ethiopia, university tutorials, student academy, freshman tutorials" />
+    <meta name="author" content="KMD Student Academy" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://kinfegetaneh21-hue.github.io/kmd-student-academy/" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kinfegetaneh21-hue.github.io/kmd-student-academy/" />
+    <meta property="og:title" content="KMD Student Academy — Learn Smarter" />
+    <meta property="og:description" content="Free freshman and premium 2nd–7th year courses, videos, notes and quizzes for Ethiopian university students." />
+    <meta property="og:image" content="https://kinfegetaneh21-hue.github.io/kmd-student-academy/logo.svg" />
+    <meta property="og:site_name" content="KMD Student Academy" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="KMD Student Academy — Learn Smarter" />
+    <meta name="twitter:description" content="Free freshman and premium 2nd–7th year courses, videos, notes and quizzes for Ethiopian university students." />
+    <meta name="twitter:image" content="https://kinfegetaneh21-hue.github.io/kmd-student-academy/logo.svg" />
+
+    <!-- JSON-LD structured data for richer search results -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "EducationalOrganization",
+        "name": "KMD Student Academy",
+        "url": "https://kinfegetaneh21-hue.github.io/kmd-student-academy/",
+        "logo": "https://kinfegetaneh21-hue.github.io/kmd-student-academy/logo.svg",
+        "description": "A modern Ethiopian LMS for freshman (free) and 2nd–7th year (premium) university students — courses, videos, notes, quizzes and downloads.",
+        "areaServed": "ET"
+      }
+    </script>
+
+    <!-- GitHub Pages SPA redirect: restores the original path after the 404.html bounce -->
+    <script>
+      (function () {
+        var l = window.location;
+        if (l.search && l.search.indexOf('?/') === 1) {
+          var decoded = l.search
+            .slice(1)
+            .split('&')
+            .map(function (s) { return s.replace(/~and~/g, '&'); })
+            .join('?');
+          var path = '/' + decoded.slice(1);
+          window.history.replaceState(null, null, l.pathname.slice(0, -1) + path + l.hash);
+        }
+      })();
+    </script>
+
     <script>
       // Initialize theme before React mounts to avoid flash.
       try {

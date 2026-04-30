@@ -3,6 +3,7 @@ import {
   ShieldCheck,
   LayoutDashboard,
   BookOpen,
+  FolderOpen,
   Users,
   Upload,
   FileUp,
@@ -41,6 +42,7 @@ const sections = [
     label: 'Content',
     items: [
       { to: '/admin/courses', label: 'Courses', icon: BookOpen },
+      { to: '/admin/course-content', label: 'Course Content', icon: FolderOpen },
       { to: '/admin/categories', label: 'Categories & Years', icon: Layers },
       { to: '/admin/announcements', label: 'Announcements', icon: Megaphone },
     ],

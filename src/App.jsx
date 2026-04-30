@@ -40,6 +40,7 @@ import MessagesPage from './dashboard/MessagesPage';
 // Admin pages
 import AdminOverview from './admin/AdminOverview';
 import ManageCoursesPage from './admin/ManageCoursesPage';
+import ManageCourseContentPage from './admin/ManageCourseContentPage';
 import ManageStudentsPage from './admin/ManageStudentsPage';
 import UploadVideosPage from './admin/UploadVideosPage';
 import UploadFilesPage from './admin/UploadFilesPage';
@@ -107,6 +108,7 @@ export default function App() {
       >
         <Route index element={<AdminOverview />} />
         <Route path="courses" element={<ManageCoursesPage />} />
+        <Route path="course-content" element={<ManageCourseContentPage />} />
         <Route path="students" element={<ManageStudentsPage />} />
         <Route path="upload-videos" element={<UploadVideosPage />} />
         <Route path="upload-files" element={<UploadFilesPage />} />

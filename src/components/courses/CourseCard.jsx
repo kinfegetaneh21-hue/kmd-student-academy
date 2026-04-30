@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Clock, Users, Star, Lock, BookOpen, PlayCircle } from 'lucide-react';
+import { Clock, Users, Star, Lock, BookOpen, PlayCircle, ShieldCheck } from 'lucide-react';
 import Badge from '../ui/Badge';
 import { useAuth } from '../../context/AuthContext';
 
@@ -56,7 +56,10 @@ export default function CourseCard({ course, compact = false }) {
           <span className="inline-flex items-center gap-1.5 text-amber-500"><Star className="h-3.5 w-3.5 fill-current" /> {course.rating}</span>
         </div>
         <div className="mt-4 flex items-center justify-between border-t border-slate-100 pt-4 dark:border-slate-800">
-          <div className="text-sm font-medium text-slate-700 dark:text-slate-200">{course.instructor}</div>
+          <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-700 dark:text-emerald-300">
+            <ShieldCheck className="h-3.5 w-3.5" />
+            Prepared by KMD Student Academy
+          </div>
           <span className="text-xs font-semibold text-brand-600 dark:text-brand-300">View course →</span>
         </div>
       </div>

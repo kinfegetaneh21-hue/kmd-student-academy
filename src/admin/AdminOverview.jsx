@@ -73,8 +73,18 @@ export default function AdminOverview() {
             Admin console
           </h1>
           <p className="text-sm text-slate-500">
-            Upload videos and files for any course in one place.
+            Upload videos and files for any course in one place — all content is published as &ldquo;Prepared by KMD Student Academy&rdquo;.
           </p>
+          <div className="mt-3 inline-flex flex-wrap items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-xs text-slate-600 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300">
+            <span className="font-semibold text-slate-900 dark:text-white">Upload area:</span>
+            <Link to="/admin/course-content" className="font-semibold text-brand-600 hover:underline dark:text-brand-300">Course Content</Link>
+            <span className="opacity-50">·</span>
+            <Link to="/admin/upload-videos" className="font-semibold text-brand-600 hover:underline dark:text-brand-300">Videos</Link>
+            <span className="opacity-50">·</span>
+            <Link to="/admin/upload-files" className="font-semibold text-brand-600 hover:underline dark:text-brand-300">Files</Link>
+            <span className="opacity-50">·</span>
+            <Link to="/admin/youtube" className="font-semibold text-brand-600 hover:underline dark:text-brand-300">YouTube links</Link>
+          </div>
         </div>
         <div className="flex flex-wrap gap-2">
           <Link to="/admin/upload-videos" className="btn-primary">

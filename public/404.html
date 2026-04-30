@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>KMD Student Academy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      // GitHub Pages SPA fallback: preserves the requested path as a query string
+      // so index.html's companion script can restore it with history.replaceState.
+      // Keep the segmentCount in sync with the number of path segments before the app root.
+      // For a project page like https://<user>.github.io/kmd-student-academy/ we skip 1 segment.
+      (function () {
+        var segmentCount = 1;
+        var l = window.location;
+        var path = l.pathname.split('/').slice(0, 1 + segmentCount).join('/') + '/?/' +
+          l.pathname.slice(1).split('/').slice(segmentCount).join('/').replace(/&/g, '~and~') +
+          (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+          l.hash;
+        l.replace(l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') + path);
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>

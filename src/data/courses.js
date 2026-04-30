@@ -25,31 +25,40 @@ const lesson = (id, title, youtubeId, duration = '12:40') => ({
 
 const module = (id, title, lessons) => ({ id, title, lessons });
 
+const freshmanCourse = ({ id, title, code, department, instructor, hours, rating, students, thumbnail, tagline, description, outcomes, modules: courseModules }) => ({
+  id,
+  title,
+  code,
+  year: 'freshman',
+  department,
+  access: 'free',
+  level: 'Freshman',
+  instructor,
+  students,
+  rating,
+  hours,
+  thumbnail,
+  tagline,
+  description,
+  outcomes,
+  modules: courseModules,
+});
+
 export const courses = [
-  // ================= FRESHMAN (FREE) =================
-  {
+  // ================= FRESHMAN (FREE) — full Ethiopian harmonized curriculum =================
+  freshmanCourse({
     id: 'fresh-eng-1',
     title: 'Communicative English Language Skills I',
     code: 'FLEn 1011',
-    year: 'freshman',
     department: 'general',
-    access: 'free',
-    level: 'Freshman',
     instructor: 'Dr. Selamawit Tesfaye',
-    students: 12840,
-    rating: 4.8,
     hours: 32,
-    thumbnail:
-      'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1200&q=60',
-    tagline: 'Write, speak and read English with confidence.',
-    description:
-      'Master academic English through listening, speaking, reading and writing practice with real exam-style tasks.',
-    outcomes: [
-      'Build strong academic vocabulary',
-      'Write clear paragraphs & essays',
-      'Listen & speak fluently in class contexts',
-      'Prepare for end-of-semester exam',
-    ],
+    rating: 4.8,
+    students: 12840,
+    thumbnail: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1200&q=60',
+    tagline: 'Write, speak and read academic English with confidence.',
+    description: 'Builds the core academic English skills every Ethiopian freshman needs: listening, speaking, reading and paragraph-level writing with real exam-style tasks.',
+    outcomes: ['Build strong academic vocabulary', 'Write clear paragraphs & essays', 'Listen & speak fluently in class contexts', 'Prepare for end-of-semester exam'],
     modules: [
       module('m1', 'Module 1: Listening & Speaking', [
         lesson('l1', 'Introduction to Academic English', 'F7pYHN9iC9I'),
@@ -65,156 +74,136 @@ export const courses = [
         lesson('l7', 'Academic Essays', 'jS4aFq5-91M'),
       ]),
     ],
-  },
-  {
-    id: 'fresh-math-ns',
-    title: 'Mathematics for Natural Science',
-    code: 'Math 1011',
-    year: 'freshman',
-    department: 'natural',
-    access: 'free',
-    level: 'Freshman',
-    instructor: 'Dr. Abebe Bekele',
-    students: 10420,
+  }),
+  freshmanCourse({
+    id: 'fresh-eng-2',
+    title: 'Communicative English Language Skills II',
+    code: 'FLEn 1012',
+    department: 'general',
+    instructor: 'Dr. Selamawit Tesfaye',
+    hours: 32,
     rating: 4.7,
-    hours: 40,
-    thumbnail:
-      'https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=1200&q=60',
-    tagline: 'From algebra to calculus — build a rock-solid foundation.',
-    description:
-      'A complete freshman math course covering functions, limits, derivatives, integrals and linear algebra basics.',
-    outcomes: [
-      'Master functions & their properties',
-      'Compute limits & derivatives confidently',
-      'Apply integrals to real problems',
-      'Ace your end-of-semester exam',
-    ],
+    students: 9620,
+    thumbnail: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=1200&q=60',
+    tagline: 'Take your academic English to the next level.',
+    description: 'Advances on Skills I with longer essays, research writing, seminar discussion, debate and exam-style report writing used across Ethiopian universities.',
+    outcomes: ['Write structured research essays', 'Lead seminar discussions', 'Present arguments persuasively', 'Master advanced grammar & style'],
     modules: [
-      module('m1', 'Module 1: Functions', [
-        lesson('l1', 'Functions & Their Graphs', 'WUvTyaaNkzM'),
-        lesson('l2', 'Composite & Inverse Functions', 'Oc-RjRIIpLI'),
+      module('m1', 'Advanced Writing', [
+        lesson('l1', 'Research Essay Structure', 'SqcY0GlETPk'),
+        lesson('l2', 'Citing & Referencing', 'jS4aFq5-91M'),
       ]),
-      module('m2', 'Module 2: Limits & Derivatives', [
-        lesson('l3', 'Limits — Intuition & Rules', 'riXcZT2ICjA'),
-        lesson('l4', 'The Derivative', '5yfh5cf4-0w'),
-      ]),
-      module('m3', 'Module 3: Integrals', [
-        lesson('l5', 'Definite & Indefinite Integrals', '__7KOUrLRwA'),
+      module('m2', 'Advanced Speaking', [
+        lesson('l3', 'Academic Debate', 'Unzc731iCUY'),
+        lesson('l4', 'Seminar Discussions', 'Ge7c7otG2mk'),
       ]),
     ],
-  },
-  {
-    id: 'fresh-physics',
-    title: 'General Physics',
-    code: 'Phys 1011',
-    year: 'freshman',
-    department: 'natural',
-    access: 'free',
-    level: 'Freshman',
-    instructor: 'Dr. Tilahun Alemu',
-    students: 8900,
-    rating: 4.6,
-    hours: 36,
-    thumbnail:
-      'https://images.unsplash.com/photo-1581090700227-1e8e03cf3c78?auto=format&fit=crop&w=1200&q=60',
-    tagline: 'Understand the universe — from motion to electromagnetism.',
-    description:
-      'Classical mechanics, thermodynamics, waves and introductory electromagnetism for all freshman students.',
-    outcomes: [
-      'Solve kinematics & dynamics problems',
-      'Understand energy, momentum & rotation',
-      'Analyze simple circuits',
-      'Prepare for lab exams',
-    ],
-    modules: [
-      module('m1', 'Mechanics', [
-        lesson('l1', 'Kinematics in 1D', 'ZM8ECpBuQYE'),
-        lesson('l2', 'Newton\u2019s Laws', 'kKKM8Y-u7ds'),
-      ]),
-      module('m2', 'Energy & Waves', [
-        lesson('l3', 'Work, Energy, Power', 'w4QFJb9a8vo'),
-        lesson('l4', 'Intro to Waves', 'Anqo_7Touj4'),
-      ]),
-    ],
-  },
-  {
+  }),
+  freshmanCourse({
     id: 'fresh-critical',
     title: 'Critical Thinking (Logic)',
-    code: 'LoCT 1011',
-    year: 'freshman',
+    code: 'Phil 1011',
     department: 'social',
-    access: 'free',
-    level: 'Freshman',
     instructor: 'Dr. Hanna Mekonnen',
-    students: 7340,
-    rating: 4.9,
     hours: 24,
-    thumbnail:
-      'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1200&q=60',
+    rating: 4.9,
+    students: 7340,
+    thumbnail: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1200&q=60',
     tagline: 'Think clearly. Argue logically. Decide wisely.',
-    description:
-      'Learn how to analyze arguments, detect fallacies, and make sound decisions in academic and real-life settings.',
-    outcomes: [
-      'Identify fallacies',
-      'Build logical arguments',
-      'Evaluate sources critically',
-      'Apply reasoning in exams',
-    ],
+    description: 'Learn how to analyze arguments, detect fallacies, apply formal and informal logic, and make sound decisions in academic and real-life contexts.',
+    outcomes: ['Identify logical fallacies', 'Build valid arguments', 'Evaluate sources critically', 'Apply reasoning in exams'],
     modules: [
       module('m1', 'Foundations of Reasoning', [
         lesson('l1', 'What is Critical Thinking?', 'Cum3k-Wglfw'),
         lesson('l2', 'Logical Fallacies', 'qUAOAebrT_A'),
       ]),
-    ],
-  },
-  {
-    id: 'fresh-geo',
-    title: 'Geography of Ethiopia and the Horn',
-    code: 'GeES 1011',
-    year: 'freshman',
-    department: 'social',
-    access: 'free',
-    level: 'Freshman',
-    instructor: 'Dr. Mulugeta Kassa',
-    students: 6120,
-    rating: 4.7,
-    hours: 22,
-    thumbnail:
-      'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200&q=60',
-    tagline: 'Explore the land, people and economy of Ethiopia and the Horn.',
-    description:
-      'Physical, human and economic geography of Ethiopia and the Horn of Africa with maps and case studies.',
-    outcomes: ['Understand climate & terrain', 'Analyze population trends', 'Map key economic zones'],
-    modules: [
-      module('m1', 'Physical Geography', [
-        lesson('l1', 'Location & Size', 'rQEEYS_oNbI'),
-        lesson('l2', 'Climate & Vegetation', 'Cum3k-Wglfw'),
+      module('m2', 'Formal Logic', [
+        lesson('l3', 'Propositional Logic', 'lnqrC7e5jdE'),
+        lesson('l4', 'Syllogisms & Arguments', 'GEIIPZK2MNY'),
       ]),
     ],
-  },
-  {
+  }),
+  freshmanCourse({
+    id: 'fresh-psychology',
+    title: 'General Psychology',
+    code: 'Psyc 1011',
+    department: 'social',
+    instructor: 'Dr. Helen Getachew',
+    hours: 24,
+    rating: 4.7,
+    students: 6820,
+    thumbnail: 'https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&w=1200&q=60',
+    tagline: 'Understand the mind, behavior and learning.',
+    description: 'An introduction to the science of mind and behavior: perception, cognition, motivation, learning, personality and mental health.',
+    outcomes: ['Explain core psychological theories', 'Describe learning & memory', 'Analyze behavior scientifically', 'Understand mental wellbeing'],
+    modules: [
+      module('m1', 'Foundations', [
+        lesson('l1', 'Intro to Psychology', 'vo4pMVb0R6M'),
+        lesson('l2', 'Biology of Behavior', 'jReX7qKU2yc'),
+      ]),
+      module('m2', 'Learning & Cognition', [
+        lesson('l3', 'Learning & Conditioning', 'qG2SwE_6uVM'),
+        lesson('l4', 'Memory & Thinking', 'bSycdIx-C48'),
+      ]),
+    ],
+  }),
+  freshmanCourse({
+    id: 'fresh-history',
+    title: 'History of Ethiopia and the Horn',
+    code: 'Hist 1012',
+    department: 'social',
+    instructor: 'Dr. Abera Jembere',
+    hours: 26,
+    rating: 4.8,
+    students: 8120,
+    thumbnail: 'https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=1200&q=60',
+    tagline: 'Ancient kingdoms to modern nation — the full Ethiopian story.',
+    description: 'Covers the history of Ethiopia and the Horn of Africa from ancient civilizations through Axum, Zagwe, Solomonic dynasty, the modern state, and contemporary challenges.',
+    outcomes: ['Trace Ethiopian civilizations', 'Analyze key historical turning points', 'Understand regional integration', 'Connect past and present'],
+    modules: [
+      module('m1', 'Ancient & Medieval', [
+        lesson('l1', 'Axumite Civilization', 'lFkXSO8rVhI'),
+        lesson('l2', 'Zagwe & Solomonic Dynasties', 'oV8V3qBMrGs'),
+      ]),
+      module('m2', 'Modern Ethiopia', [
+        lesson('l3', 'Menelik II & Adwa', 'zSO4_RMNq2A'),
+        lesson('l4', '20th Century Ethiopia', 'p2qmvw5OHRE'),
+      ]),
+    ],
+  }),
+  freshmanCourse({
+    id: 'fresh-civics',
+    title: 'Moral and Civics Education',
+    code: 'MCiE 1012',
+    department: 'social',
+    instructor: 'Dr. Biruk Assefa',
+    hours: 20,
+    rating: 4.6,
+    students: 5600,
+    thumbnail: 'https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=1200&q=60',
+    tagline: 'Be an informed, ethical and active citizen.',
+    description: 'Explores ethics, citizenship, the FDRE constitution, democracy, human rights, and responsible civic participation in Ethiopia.',
+    outcomes: ['Understand constitutional rights', 'Build ethical reasoning', 'Engage as a citizen', 'Apply civic values daily'],
+    modules: [
+      module('m1', 'Ethics & Citizenship', [
+        lesson('l1', 'What is Ethics?', 'u399XmGC0mY'),
+        lesson('l2', 'Citizenship & Constitution', 'aHZSkJrEy9o'),
+      ]),
+    ],
+  }),
+  freshmanCourse({
     id: 'fresh-emerging',
     title: 'Introduction to Emerging Technologies',
     code: 'EmTe 1012',
-    year: 'freshman',
     department: 'it',
-    access: 'free',
-    level: 'Freshman',
     instructor: 'Mr. Yonas Abera',
-    students: 9540,
-    rating: 4.8,
     hours: 28,
-    thumbnail:
-      'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=60',
+    rating: 4.8,
+    students: 9540,
+    thumbnail: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=60',
     tagline: 'AI, IoT, Blockchain and more — your guide to the future.',
-    description:
-      'Introduces freshman students to emerging technologies shaping the future: AI, IoT, Blockchain, Robotics & Data Science.',
-    outcomes: [
-      'Explain core AI concepts',
-      'Understand IoT architecture',
-      'Describe blockchain basics',
-      'Apply data science thinking',
-    ],
+    description: 'Introduces freshman students to emerging technologies shaping the future: AI, IoT, Blockchain, Robotics and Data Science with hands-on demos.',
+    outcomes: ['Explain core AI concepts', 'Understand IoT architecture', 'Describe blockchain basics', 'Apply data science thinking'],
     modules: [
       module('m1', 'Foundations', [
         lesson('l1', 'What are Emerging Technologies?', 'mJeNghZXtMo'),
@@ -225,357 +214,288 @@ export const courses = [
         lesson('l4', 'Blockchain Basics', 'SSo_EIwHSd4'),
       ]),
     ],
-  },
-  {
-    id: 'fresh-civics',
-    title: 'Moral and Civics Education',
-    code: 'MCiE 1012',
-    year: 'freshman',
+  }),
+  freshmanCourse({
+    id: 'fresh-geo',
+    title: 'Geography of Ethiopia and the Horn',
+    code: 'GeES 1011',
     department: 'social',
-    access: 'free',
-    level: 'Freshman',
-    instructor: 'Dr. Biruk Assefa',
-    students: 5600,
-    rating: 4.6,
-    hours: 20,
-    thumbnail:
-      'https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=1200&q=60',
-    tagline: 'Be an informed, ethical and active citizen.',
-    description:
-      'Explore ethics, citizenship, constitution and responsible civic participation in Ethiopia.',
-    outcomes: ['Understand constitutional rights', 'Build ethical reasoning', 'Engage as a citizen'],
-    modules: [
-      module('m1', 'Ethics & Citizenship', [
-        lesson('l1', 'What is Ethics?', 'u399XmGC0mY'),
-      ]),
-    ],
-  },
-  {
-    id: 'fresh-eng-2',
-    title: 'Communicative English Language Skills II',
-    code: 'FLEn 1012',
-    year: 'freshman',
-    department: 'general',
-    access: 'free',
-    level: 'Freshman',
-    instructor: 'Dr. Selamawit Tesfaye',
-    students: 9620,
-    rating: 4.8,
-    hours: 32,
-    thumbnail:
-      'https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=1200&q=60',
-    tagline: 'Advanced academic communication — argue, debate, publish.',
-    description:
-      'A continuation of FLEn 1011 focused on advanced writing, research reports, formal presentations and group discussion.',
-    outcomes: [
-      'Write research-style reports',
-      'Deliver formal presentations',
-      'Lead academic discussions',
-      'Refine grammar and style',
-    ],
-    modules: [
-      module('m1', 'Advanced Writing', [
-        lesson('l1', 'Research Reports', 'jS4aFq5-91M'),
-        lesson('l2', 'Argumentative Essays', 'SqcY0GlETPk'),
-      ]),
-      module('m2', 'Speaking & Debate', [
-        lesson('l3', 'Formal Presentations', 'Unzc731iCUY'),
-      ]),
-    ],
-  },
-  {
-    id: 'fresh-psych',
-    title: 'General Psychology',
-    code: 'Psyc 1011',
-    year: 'freshman',
-    department: 'social',
-    access: 'free',
-    level: 'Freshman',
-    instructor: 'Dr. Meron Gebremedhin',
-    students: 7980,
+    instructor: 'Dr. Mulugeta Kassa',
+    hours: 22,
     rating: 4.7,
-    hours: 24,
-    thumbnail:
-      'https://images.unsplash.com/photo-1544027993-37dbfe43562a?auto=format&fit=crop&w=1200&q=60',
-    tagline: 'Understand how humans think, feel and behave.',
-    description:
-      'Foundations of psychology: biological bases, learning, memory, personality, motivation and mental health.',
-    outcomes: ['Explain major theories', 'Understand cognition & emotion', 'Apply psychology to daily life'],
+    students: 6120,
+    thumbnail: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200&q=60',
+    tagline: 'Explore the land, people and economy of Ethiopia and the Horn.',
+    description: 'Physical, human and economic geography of Ethiopia and the Horn of Africa with maps, data and case studies.',
+    outcomes: ['Understand climate & terrain', 'Analyze population trends', 'Map key economic zones', 'Read geographic data'],
     modules: [
-      module('m1', 'Foundations', [
-        lesson('l1', 'What is Psychology?', 'vo2mR4g7YFE'),
+      module('m1', 'Physical Geography', [
+        lesson('l1', 'Location & Size', 'rQEEYS_oNbI'),
+        lesson('l2', 'Climate & Vegetation', 'Cum3k-Wglfw'),
       ]),
-      module('m2', 'Cognition & Learning', [
-        lesson('l2', 'Memory & Learning', 'NHBR3udCLDs'),
+      module('m2', 'Human Geography', [
+        lesson('l3', 'Population & Settlement', 'QsBT5EQt348'),
+        lesson('l4', 'Economic Geography', 'xqlIw5FjeyQ'),
       ]),
     ],
-  },
-  {
-    id: 'fresh-history',
-    title: 'History of Ethiopia and the Horn',
-    code: 'Hist 1012',
-    year: 'freshman',
-    department: 'social',
-    access: 'free',
-    level: 'Freshman',
-    instructor: 'Dr. Tesfaye Lemma',
-    students: 6420,
-    rating: 4.8,
-    hours: 26,
-    thumbnail:
-      'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1200&q=60',
-    tagline: 'From ancient Aksum to modern Ethiopia.',
-    description:
-      'Ancient, medieval and modern history of Ethiopia and the Horn — states, peoples, economy and foreign relations.',
-    outcomes: ['Trace state formation', 'Explain social change', 'Evaluate primary sources'],
-    modules: [
-      module('m1', 'Ancient & Medieval', [
-        lesson('l1', 'The Aksumite Civilization', 'DDqEPVWXr-4'),
-      ]),
-      module('m2', 'Modern Ethiopia', [
-        lesson('l2', '19th & 20th Century', 'pY4qpP7vbKc'),
-      ]),
-    ],
-  },
-  {
+  }),
+  freshmanCourse({
     id: 'fresh-fitness',
     title: 'Physical Fitness and Health',
     code: 'SpSc 1011',
-    year: 'freshman',
     department: 'general',
-    access: 'free',
-    level: 'Freshman',
-    instructor: 'Mr. Dawit Lemma',
-    students: 5100,
-    rating: 4.6,
+    instructor: 'Coach Daniel Lemma',
     hours: 16,
-    thumbnail:
-      'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1200&q=60',
-    tagline: 'Build a healthier body and a sharper mind.',
-    description:
-      'Physical activity, nutrition, wellness and lifestyle for university students — practical and theory-based.',
-    outcomes: ['Plan a workout routine', 'Understand nutrition basics', 'Improve long-term health'],
+    rating: 4.5,
+    students: 5120,
+    thumbnail: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1200&q=60',
+    tagline: 'Train your body. Fuel your mind.',
+    description: 'Principles of physical fitness, healthy living, nutrition, exercise science and injury prevention for university students.',
+    outcomes: ['Design a fitness routine', 'Understand nutrition basics', 'Prevent common injuries', 'Balance study and health'],
     modules: [
       module('m1', 'Fitness Foundations', [
-        lesson('l1', 'Warm-up & Cool-down', 'ml6cT4AZdqI'),
+        lesson('l1', 'Components of Fitness', 'R0mMyV5OtcM'),
+        lesson('l2', 'Cardio & Strength', 'UBMk30rjy0o'),
       ]),
-      module('m2', 'Healthy Living', [
-        lesson('l2', 'Nutrition 101', 'yumRqy0lj2w'),
+      module('m2', 'Nutrition & Health', [
+        lesson('l3', 'Balanced Nutrition', 'lfvldLftFsU'),
       ]),
     ],
-  },
-  {
+  }),
+  freshmanCourse({
     id: 'fresh-anthro',
     title: 'Social Anthropology',
     code: 'Anth 1012',
-    year: 'freshman',
     department: 'social',
-    access: 'free',
-    level: 'Freshman',
-    instructor: 'Dr. Liya Mengistu',
-    students: 4280,
-    rating: 4.7,
-    hours: 20,
-    thumbnail:
-      'https://images.unsplash.com/photo-1532635241-17e820acc59f?auto=format&fit=crop&w=1200&q=60',
-    tagline: 'Explore culture, society and human diversity.',
-    description:
-      'Key concepts of social anthropology: culture, kinship, religion, ethnicity and contemporary social issues.',
-    outcomes: ['Define culture & society', 'Analyze kinship systems', 'Apply anthropological thinking'],
+    instructor: 'Dr. Meskerem Assefa',
+    hours: 22,
+    rating: 4.6,
+    students: 4320,
+    thumbnail: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&w=1200&q=60',
+    tagline: 'Understand culture, society and identity.',
+    description: 'Introduces concepts of culture, kinship, social institutions and cultural diversity — with emphasis on Ethiopian peoples and customs.',
+    outcomes: ['Explain culture & society', 'Analyze kinship systems', 'Respect cultural diversity', 'Apply ethnographic thinking'],
     modules: [
       module('m1', 'Culture & Society', [
-        lesson('l1', 'What is Anthropology?', 'VoEb4d-SE2w'),
+        lesson('l1', 'What is Anthropology?', 'zG1zE1IpZd4'),
+        lesson('l2', 'Ethiopian Peoples & Cultures', 'vONONe4MQEE'),
       ]),
     ],
-  },
-  {
-    id: 'fresh-inclusiveness',
+  }),
+  freshmanCourse({
+    id: 'fresh-inclusive',
     title: 'Inclusiveness',
     code: 'SNIE 1012',
-    year: 'freshman',
-    department: 'social',
-    access: 'free',
-    level: 'Freshman',
-    instructor: 'Dr. Hiwot Asrat',
-    students: 3960,
-    rating: 4.6,
-    hours: 16,
-    thumbnail:
-      'https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=1200&q=60',
-    tagline: 'Build a learning culture that welcomes everyone.',
-    description:
-      'Understand disability, special needs and inclusive education — policies, practice and social attitudes.',
-    outcomes: ['Apply inclusive language', 'Design accessible activities', 'Challenge bias and stigma'],
+    department: 'education',
+    instructor: 'Dr. Rahel Tadesse',
+    hours: 18,
+    rating: 4.7,
+    students: 4880,
+    thumbnail: 'https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=1200&q=60',
+    tagline: 'Build a society where everyone belongs.',
+    description: 'Principles of inclusive education and society: disability, diversity, equity and universal design applied to the Ethiopian context.',
+    outcomes: ['Define inclusive education', 'Identify barriers to inclusion', 'Apply universal design', 'Champion accessibility'],
     modules: [
-      module('m1', 'Foundations of Inclusiveness', [
-        lesson('l1', 'Inclusive Education', 'X4Wm9ynjFxE'),
+      module('m1', 'Foundations of Inclusion', [
+        lesson('l1', 'What is Inclusive Education?', 'knfUdJr6k7Y'),
+        lesson('l2', 'Disability & Diversity', 'oaUEhrDz9Sw'),
       ]),
     ],
-  },
-  {
-    id: 'fresh-chemistry',
+  }),
+  freshmanCourse({
+    id: 'fresh-math',
+    title: 'Mathematics for Natural Science',
+    code: 'Math 1011',
+    department: 'natural',
+    instructor: 'Dr. Abebe Bekele',
+    hours: 40,
+    rating: 4.7,
+    students: 10420,
+    thumbnail: 'https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=1200&q=60',
+    tagline: 'From algebra to calculus — build a rock-solid foundation.',
+    description: 'A complete freshman math course for natural science students: functions, limits, derivatives, integrals and linear algebra basics.',
+    outcomes: ['Master functions & their properties', 'Compute limits & derivatives confidently', 'Apply integrals to real problems', 'Ace your end-of-semester exam'],
+    modules: [
+      module('m1', 'Functions', [
+        lesson('l1', 'Functions & Their Graphs', 'WUvTyaaNkzM'),
+        lesson('l2', 'Composite & Inverse Functions', 'Oc-RjRIIpLI'),
+      ]),
+      module('m2', 'Limits & Derivatives', [
+        lesson('l3', 'Limits — Intuition & Rules', 'riXcZT2ICjA'),
+        lesson('l4', 'The Derivative', '5yfh5cf4-0w'),
+      ]),
+      module('m3', 'Integrals', [
+        lesson('l5', 'Definite & Indefinite Integrals', '__7KOUrLRwA'),
+      ]),
+    ],
+  }),
+  freshmanCourse({
+    id: 'fresh-physics',
+    title: 'General Physics',
+    code: 'Phys 1011',
+    department: 'natural',
+    instructor: 'Dr. Tilahun Alemu',
+    hours: 36,
+    rating: 4.6,
+    students: 8900,
+    thumbnail: 'https://images.unsplash.com/photo-1581090700227-1e8e03cf3c78?auto=format&fit=crop&w=1200&q=60',
+    tagline: 'Understand the universe — from motion to electromagnetism.',
+    description: 'Classical mechanics, thermodynamics, waves and introductory electromagnetism for all freshman students.',
+    outcomes: ['Solve kinematics & dynamics problems', 'Understand energy, momentum & rotation', 'Analyze simple circuits', 'Prepare for lab exams'],
+    modules: [
+      module('m1', 'Mechanics', [
+        lesson('l1', 'Kinematics in 1D', 'ZM8ECpBuQYE'),
+        lesson('l2', "Newton's Laws", 'kKKM8Y-u7ds'),
+      ]),
+      module('m2', 'Energy & Waves', [
+        lesson('l3', 'Work, Energy, Power', 'w4QFJb9a8vo'),
+        lesson('l4', 'Intro to Waves', 'Anqo_7Touj4'),
+      ]),
+    ],
+  }),
+  freshmanCourse({
+    id: 'fresh-chem',
     title: 'General Chemistry',
     code: 'Chem 1011',
-    year: 'freshman',
     department: 'natural',
-    access: 'free',
-    level: 'Freshman',
-    instructor: 'Dr. Hailemariam Girma',
-    students: 7180,
-    rating: 4.7,
-    hours: 36,
-    thumbnail:
-      'https://images.unsplash.com/photo-1554475901-4538ddfbccc2?auto=format&fit=crop&w=1200&q=60',
-    tagline: 'Matter, reactions and the periodic table.',
-    description:
-      'Atomic structure, periodic trends, chemical bonding, stoichiometry, thermochemistry and introductory organic chemistry.',
-    outcomes: ['Balance reactions', 'Predict bonding', 'Solve stoichiometry', 'Interpret periodic trends'],
+    instructor: 'Dr. Meron Bekele',
+    hours: 34,
+    rating: 4.6,
+    students: 7210,
+    thumbnail: 'https://images.unsplash.com/photo-1567427018141-0584cfcbf1b8?auto=format&fit=crop&w=1200&q=60',
+    tagline: 'Atoms, bonds and reactions — decoded.',
+    description: 'Atomic structure, periodic trends, bonding, stoichiometry, thermochemistry and chemical equilibrium with real-lab demonstrations.',
+    outcomes: ['Balance chemical equations', 'Predict bonding & geometry', 'Apply thermochemistry', 'Solve equilibrium problems'],
     modules: [
-      module('m1', 'Atoms & Bonds', [
-        lesson('l1', 'Atomic Structure', 'FSyAehMdpyI'),
-        lesson('l2', 'Periodic Table', '0RRVV4Diomg'),
+      module('m1', 'Atomic Theory', [
+        lesson('l1', 'Atoms & the Periodic Table', 'FSyAehMdpyI'),
+        lesson('l2', 'Chemical Bonding', 'QXT4OVM4vXI'),
       ]),
       module('m2', 'Reactions', [
-        lesson('l3', 'Stoichiometry', 'ZSXjCE8Ri7g'),
+        lesson('l3', 'Stoichiometry', 'UL1jmJaUkaQ'),
+        lesson('l4', 'Equilibrium', '2X5zFsOZuEY'),
       ]),
     ],
-  },
-  {
-    id: 'fresh-biology',
+  }),
+  freshmanCourse({
+    id: 'fresh-bio',
     title: 'General Biology',
     code: 'Biol 1011',
-    year: 'freshman',
     department: 'natural',
-    access: 'free',
-    level: 'Freshman',
-    instructor: 'Dr. Martha Teshome',
-    students: 6540,
-    rating: 4.7,
+    instructor: 'Dr. Hailu Gebre',
     hours: 34,
-    thumbnail:
-      'https://images.unsplash.com/photo-1530026186672-2cd00ffc50fe?auto=format&fit=crop&w=1200&q=60',
-    tagline: 'Life, from cells to ecosystems.',
-    description:
-      'Cells, genetics, evolution, diversity of life and ecology — a complete freshman biology course.',
-    outcomes: ['Describe cell structure', 'Explain inheritance', 'Interpret ecological data'],
+    rating: 4.7,
+    students: 7480,
+    thumbnail: 'https://images.unsplash.com/photo-1530026405186-ed1f139313f8?auto=format&fit=crop&w=1200&q=60',
+    tagline: 'The science of life — from cells to ecosystems.',
+    description: 'Cell biology, genetics, evolution, human body systems and ecology — the full freshman biology core curriculum.',
+    outcomes: ['Describe cell structure', 'Explain Mendelian genetics', 'Understand evolution', 'Analyze ecosystems'],
     modules: [
-      module('m1', 'The Cell', [
-        lesson('l1', 'Cell Structure', 'URUJD5NEXC8'),
+      module('m1', 'Cell Biology', [
+        lesson('l1', 'The Cell', '8IlzKri08kk'),
+        lesson('l2', 'Cell Division', 'f-ldPgEfAHI'),
       ]),
-      module('m2', 'Genetics', [
-        lesson('l2', 'DNA & Genes', '8m6hHRlKwxY'),
+      module('m2', 'Genetics & Evolution', [
+        lesson('l3', 'Mendelian Genetics', 'Mehz7tCxjSE'),
+        lesson('l4', 'Evolution by Natural Selection', 'GcjgWov7mTM'),
       ]),
     ],
-  },
-  {
-    id: 'fresh-math-ss',
+  }),
+  freshmanCourse({
+    id: 'fresh-math-social',
     title: 'Mathematics for Social Science',
     code: 'Math 1012',
-    year: 'freshman',
     department: 'social',
-    access: 'free',
-    level: 'Freshman',
-    instructor: 'Dr. Abebe Bekele',
-    students: 5240,
+    instructor: 'Dr. Tsion Worku',
+    hours: 30,
     rating: 4.6,
-    hours: 32,
-    thumbnail:
-      'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=1200&q=60',
-    tagline: 'Numbers, graphs and models for social science students.',
-    description:
-      'Functions, matrices, probability and statistics designed for economics, business and social science programs.',
-    outcomes: ['Use functions in economics', 'Work with matrices', 'Apply basic statistics'],
+    students: 6340,
+    thumbnail: 'https://images.unsplash.com/photo-1596496050755-c923e73e42e1?auto=format&fit=crop&w=1200&q=60',
+    tagline: 'Applied math for business, economics and social sciences.',
+    description: 'Sets, functions, matrices, linear equations, calculus basics and statistics tailored for social science and business freshmen.',
+    outcomes: ['Work with sets & functions', 'Use matrices confidently', 'Apply basic calculus', 'Interpret statistics'],
     modules: [
-      module('m1', 'Functions & Equations', [
-        lesson('l1', 'Linear Models', 'ZK3O402wf1c'),
+      module('m1', 'Sets & Functions', [
+        lesson('l1', 'Sets & Relations', 'bNAkO5Z_TgM'),
+        lesson('l2', 'Functions Overview', 'WUvTyaaNkzM'),
       ]),
-      module('m2', 'Statistics', [
-        lesson('l2', 'Descriptive Statistics', 'MXaJ7sa7q-8'),
+      module('m2', 'Matrices & Calculus', [
+        lesson('l3', 'Matrix Operations', 'xyAuNHPsq-g'),
+        lesson('l4', 'Derivatives in Economics', 'ANyVpMS3HL4'),
       ]),
     ],
-  },
-  {
+  }),
+  freshmanCourse({
     id: 'fresh-econ',
     title: 'Introduction to Economics',
     code: 'Econ 1011',
-    year: 'freshman',
     department: 'business',
-    access: 'free',
-    level: 'Freshman',
-    instructor: 'Dr. Samuel Hailu',
-    students: 5880,
-    rating: 4.7,
+    instructor: 'Dr. Teshome Kebede',
     hours: 28,
-    thumbnail:
-      'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=1200&q=60',
-    tagline: 'How people, firms and nations make choices.',
-    description:
-      'Microeconomic decisions, market structures, macro indicators, inflation, unemployment and growth.',
-    outcomes: ['Read supply & demand curves', 'Explain GDP & inflation', 'Evaluate policy basics'],
+    rating: 4.7,
+    students: 8240,
+    thumbnail: 'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=1200&q=60',
+    tagline: 'How markets, prices and policy actually work.',
+    description: 'Micro and macro foundations: supply and demand, market structures, GDP, inflation, unemployment and monetary/fiscal policy.',
+    outcomes: ['Explain supply & demand', 'Analyze market structures', 'Understand GDP & inflation', 'Evaluate economic policy'],
     modules: [
       module('m1', 'Microeconomics', [
-        lesson('l1', 'Supply & Demand', 'g2uJyuu-ubw'),
+        lesson('l1', 'Supply & Demand', '3ez9CSSdkiA'),
+        lesson('l2', 'Market Structures', 'QFaKxv7Vdhg'),
       ]),
       module('m2', 'Macroeconomics', [
-        lesson('l2', 'GDP & Inflation', 'q5Edef_m6Sg'),
+        lesson('l3', 'GDP & Inflation', 'zz_R1XqMBrc'),
+        lesson('l4', 'Fiscal & Monetary Policy', 'otmgFQHbaDo'),
       ]),
     ],
-  },
-  {
+  }),
+  freshmanCourse({
     id: 'fresh-global',
     title: 'Global Trends',
     code: 'GlTr 1012',
-    year: 'freshman',
     department: 'social',
-    access: 'free',
-    level: 'Freshman',
-    instructor: 'Dr. Fikru Alemayehu',
-    students: 4860,
-    rating: 4.7,
-    hours: 22,
-    thumbnail:
-      'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=60',
-    tagline: 'Understand globalization, diplomacy and world affairs.',
-    description:
-      'Theories of international relations, globalization, regionalism, global governance and Ethiopia\u2019s foreign policy.',
-    outcomes: ['Interpret global events', 'Compare IR theories', 'Analyze foreign policy'],
+    instructor: 'Dr. Yared Amare',
+    hours: 24,
+    rating: 4.6,
+    students: 5980,
+    thumbnail: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=60',
+    tagline: 'Globalization, diplomacy and the shifting world order.',
+    description: 'Examines globalization, international relations, foreign policy, regional integration and Ethiopia\u2019s place in the world.',
+    outcomes: ['Explain globalization', 'Analyze foreign policy', 'Understand international organizations', 'Discuss global issues'],
     modules: [
-      module('m1', 'International Relations', [
-        lesson('l1', 'Theories of IR', 'mI2PCUNLZAU'),
+      module('m1', 'Globalization', [
+        lesson('l1', 'What is Globalization?', 'JJ0nFD19eT8'),
+        lesson('l2', 'International Relations', 't-AbbpNUNsI'),
       ]),
-      module('m2', 'Globalization', [
-        lesson('l2', 'Globalization Explained', 'JJ0nFD19eT8'),
+      module('m2', 'Regional & Global Issues', [
+        lesson('l3', 'African Union & Regional Bodies', 'K8lxR2ztdRc'),
       ]),
     ],
-  },
-  {
+  }),
+  freshmanCourse({
     id: 'fresh-entre',
     title: 'Entrepreneurship',
     code: 'MGMT 1012',
-    year: 'freshman',
     department: 'business',
-    access: 'free',
-    level: 'Freshman',
-    instructor: 'Mrs. Bethlehem Tilahun',
-    students: 6240,
+    instructor: 'Mr. Dawit Solomon',
+    hours: 24,
     rating: 4.8,
-    hours: 26,
-    thumbnail:
-      'https://images.unsplash.com/photo-1556740738-b6a63e27c4df?auto=format&fit=crop&w=1200&q=60',
-    tagline: 'Turn your ideas into a real business.',
-    description:
-      'Opportunity discovery, business models, market validation, startup finance and pitching for freshman students.',
-    outcomes: ['Spot opportunities', 'Build a lean business model', 'Pitch your idea with confidence'],
+    students: 7860,
+    thumbnail: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1200&q=60',
+    tagline: 'Turn ideas into businesses.',
+    description: 'From ideation to launch: opportunity recognition, business model canvas, lean startup, financing, pitching and managing growth in Ethiopia.',
+    outcomes: ['Identify business opportunities', 'Build a business model', 'Pitch convincingly', 'Plan for sustainable growth'],
     modules: [
-      module('m1', 'From Idea to Startup', [
-        lesson('l1', 'Entrepreneurial Mindset', 'ZoqgAy3h4OM'),
+      module('m1', 'Idea to Opportunity', [
+        lesson('l1', 'Entrepreneurial Mindset', 'hJBzEvg3_O8'),
         lesson('l2', 'Business Model Canvas', 'QoAOzMTLP5s'),
       ]),
-      module('m2', 'Launch', [
-        lesson('l3', 'Pitching Your Idea', 'Th8JoIan4dg'),
+      module('m2', 'Launch & Growth', [
+        lesson('l3', 'Lean Startup', 'fEvKo90qBns'),
+        lesson('l4', 'Pitching to Investors', 'RVOz7wkaLUQ'),
       ]),
     ],
-  },
+  }),
 
   // ================= 2ND YEAR (PREMIUM) =================
   {
