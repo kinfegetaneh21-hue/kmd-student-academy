@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import {
   Clock,
@@ -28,6 +28,11 @@ export default function CourseDetailPage() {
   const course = courses.find((c) => c.id === id);
   const [activeLesson, setActiveLesson] = useState(null);
   const [openModule, setOpenModule] = useState({});
+
+  useEffect(() => {
+    setActiveLesson(null);
+    setOpenModule({});
+  }, [id]);
 
   const lessons = useMemo(() => (course ? lessonsOfCourse(course) : []), [course]);
   const current = activeLesson || lessons[0];
