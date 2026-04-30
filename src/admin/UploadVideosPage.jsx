@@ -1,4 +1,5 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Upload, PlayCircle, Trash2, Plus, Search } from 'lucide-react';
 import { useData } from '../context/DataContext';
 import { academicYears } from '../data/siteConfig';
@@ -6,21 +7,37 @@ import Badge from '../components/ui/Badge';
 
 export default function UploadVideosPage() {
   const { videos, addVideo, removeVideo, courses } = useData();
+  const [searchParams] = useSearchParams();
+  const requestedCourseId = searchParams.get('courseId') || '';
   const freshmanCourses = useMemo(
     () => courses.filter((c) => c.year === 'freshman'),
     [courses]
   );
-  const firstCourseId = courses[0]?.id || '';
+  const initialCourse = useMemo(() => {
+    const requested = courses.find((c) => c.id === requestedCourseId);
+    return requested || courses[0];
+  }, [courses, requestedCourseId]);
   const [form, setForm] = useState({
     title: '',
     youtubeId: '',
     description: '',
-    courseId: firstCourseId,
-    year: 'freshman',
-    access: 'free',
+    courseId: initialCourse?.id || '',
+    year: initialCourse?.year || 'freshman',
+    access: initialCourse?.access || 'free',
     tag: 'Lecture',
     duration: '15:00',
   });
+
+  useEffect(() => {
+    if (!requestedCourseId) return;
+    const course = courses.find((c) => c.id === requestedCourseId);
+    if (!course) return;
+    setForm((f) =>
+      f.courseId === course.id
+        ? f
+        : { ...f, courseId: course.id, year: course.year, access: course.access }
+    );
+  }, [requestedCourseId, courses]);
   const [filter, setFilter] = useState('');
 
   const submit = (e) => {

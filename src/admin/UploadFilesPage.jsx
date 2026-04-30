@@ -1,4 +1,5 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Upload, FileText, Trash2, Search } from 'lucide-react';
 import { useData } from '../context/DataContext';
 import { academicYears } from '../data/siteConfig';
@@ -11,20 +12,35 @@ const seedFiles = [
 
 export default function UploadFilesPage() {
   const { courses, files, addFile, removeFile } = useData();
+  const [searchParams] = useSearchParams();
+  const requestedCourseId = searchParams.get('courseId') || '';
   const freshmanCourses = useMemo(
     () => courses.filter((c) => c.year === 'freshman'),
     [courses]
   );
-  const firstCourseId = courses[0]?.id || '';
-  const firstCourse = courses.find((c) => c.id === firstCourseId);
+  const initialCourse = useMemo(() => {
+    const requested = courses.find((c) => c.id === requestedCourseId);
+    return requested || courses[0];
+  }, [courses, requestedCourseId]);
   const [form, setForm] = useState({
     title: '',
-    courseId: firstCourseId,
-    year: firstCourse?.year || 'freshman',
-    access: firstCourse?.access || 'free',
+    courseId: initialCourse?.id || '',
+    year: initialCourse?.year || 'freshman',
+    access: initialCourse?.access || 'free',
     type: 'pdf',
     size: '1.2 MB',
   });
+
+  useEffect(() => {
+    if (!requestedCourseId) return;
+    const course = courses.find((c) => c.id === requestedCourseId);
+    if (!course) return;
+    setForm((f) =>
+      f.courseId === course.id
+        ? f
+        : { ...f, courseId: course.id, year: course.year, access: course.access }
+    );
+  }, [requestedCourseId, courses]);
   const [filter, setFilter] = useState('');
 
   const allFiles = files.length > 0 ? files : seedFiles;

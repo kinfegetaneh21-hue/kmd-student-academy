@@ -24,17 +24,38 @@ import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
 import cn from '../utils/cn';
 
-const items = [
-  { to: '/admin', label: 'Overview', icon: LayoutDashboard, end: true },
-  { to: '/admin/courses', label: 'Courses', icon: BookOpen },
-  { to: '/admin/students', label: 'Students', icon: Users },
-  { to: '/admin/upload-videos', label: 'Upload Videos', icon: Upload },
-  { to: '/admin/upload-files', label: 'Upload Files', icon: FileUp },
-  { to: '/admin/youtube', label: 'YouTube Links', icon: Youtube },
-  { to: '/admin/plans', label: 'Premium Plans', icon: Crown },
-  { to: '/admin/announcements', label: 'Announcements', icon: Megaphone },
-  { to: '/admin/categories', label: 'Categories & Years', icon: Layers },
-  { to: '/admin/settings', label: 'Settings', icon: Settings },
+const sections = [
+  {
+    label: 'Workspace',
+    items: [{ to: '/admin', label: 'Overview', icon: LayoutDashboard, end: true }],
+  },
+  {
+    label: 'Upload area',
+    items: [
+      { to: '/admin/upload-videos', label: 'Upload Videos', icon: Upload },
+      { to: '/admin/upload-files', label: 'Upload Files', icon: FileUp },
+      { to: '/admin/youtube', label: 'YouTube Links', icon: Youtube },
+    ],
+  },
+  {
+    label: 'Content',
+    items: [
+      { to: '/admin/courses', label: 'Courses', icon: BookOpen },
+      { to: '/admin/categories', label: 'Categories & Years', icon: Layers },
+      { to: '/admin/announcements', label: 'Announcements', icon: Megaphone },
+    ],
+  },
+  {
+    label: 'People & billing',
+    items: [
+      { to: '/admin/students', label: 'Students', icon: Users },
+      { to: '/admin/plans', label: 'Premium Plans', icon: Crown },
+    ],
+  },
+  {
+    label: 'System',
+    items: [{ to: '/admin/settings', label: 'Settings', icon: Settings }],
+  },
 ];
 
 function Sidebar({ onLogout }) {
@@ -46,24 +67,33 @@ function Sidebar({ onLogout }) {
           <ShieldCheck className="h-3 w-3" /> Admin
         </span>
       </div>
-      <nav className="flex-1 space-y-1 p-3">
-        {items.map((i) => (
-          <NavLink
-            key={i.to}
-            to={i.to}
-            end={i.end}
-            className={({ isActive }) =>
-              cn(
-                'flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold',
-                isActive
-                  ? 'bg-slate-900 text-white shadow-soft dark:bg-white dark:text-slate-900'
-                  : 'text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800'
-              )
-            }
-          >
-            <i.icon className="h-4 w-4" />
-            {i.label}
-          </NavLink>
+      <nav className="flex-1 overflow-y-auto p-3">
+        {sections.map((section) => (
+          <div key={section.label} className="mb-4">
+            <div className="px-3 pb-1 text-[10px] font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+              {section.label}
+            </div>
+            <div className="space-y-1">
+              {section.items.map((i) => (
+                <NavLink
+                  key={i.to}
+                  to={i.to}
+                  end={i.end}
+                  className={({ isActive }) =>
+                    cn(
+                      'flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold',
+                      isActive
+                        ? 'bg-slate-900 text-white shadow-soft dark:bg-white dark:text-slate-900'
+                        : 'text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800'
+                    )
+                  }
+                >
+                  <i.icon className="h-4 w-4" />
+                  {i.label}
+                </NavLink>
+              ))}
+            </div>
+          </div>
         ))}
       </nav>
       <div className="border-t border-slate-200 p-3 dark:border-slate-800">
