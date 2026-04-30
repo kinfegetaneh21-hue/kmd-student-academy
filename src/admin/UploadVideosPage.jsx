@@ -77,6 +77,10 @@ export default function UploadVideosPage() {
           <h1 className="font-display text-2xl font-extrabold text-slate-900 dark:text-white">Upload videos</h1>
           <p className="text-sm text-slate-500">Attach YouTube lessons to any freshman or premium course.</p>
         </div>
+        <div className="rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-xs font-semibold text-emerald-800 dark:border-emerald-900 dark:bg-emerald-950 dark:text-emerald-200">
+          <span className="block text-[10px] uppercase tracking-wider opacity-70">How it works</span>
+          1. Pick course · 2. Paste YouTube ID · 3. Click <span className="underline">Add video</span>
+        </div>
         <div className="relative">
           <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
           <input

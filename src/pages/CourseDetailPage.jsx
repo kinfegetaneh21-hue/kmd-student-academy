@@ -267,14 +267,14 @@ export default function CourseDetailPage() {
         <aside className="space-y-4 lg:col-span-4">
           <div className="card-padded">
             <div className="flex items-center gap-3">
-              <img
-                src={`https://i.pravatar.cc/60?u=${encodeURIComponent(course.instructor)}`}
-                alt={course.instructor}
-                className="h-12 w-12 rounded-full object-cover"
-              />
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-emerald-100 text-emerald-700 ring-1 ring-emerald-200 dark:bg-emerald-950 dark:text-emerald-300 dark:ring-emerald-900">
+                <span className="font-display text-base font-extrabold">KMD</span>
+              </div>
               <div>
-                <div className="text-sm font-semibold text-slate-900 dark:text-white">{course.instructor}</div>
-                <div className="text-xs text-slate-500">Senior lecturer · Ethiopia</div>
+                <div className="text-sm font-semibold text-slate-900 dark:text-white">
+                  Prepared by KMD Student Academy
+                </div>
+                <div className="text-xs text-slate-500">Course content reviewed and curated by KMD · Ethiopia</div>
               </div>
             </div>
           </div>

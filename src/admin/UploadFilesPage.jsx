@@ -82,6 +82,10 @@ export default function UploadFilesPage() {
           <h1 className="font-display text-2xl font-extrabold text-slate-900 dark:text-white">Upload files</h1>
           <p className="text-sm text-slate-500">PDFs, slides, worksheets — attached to the freshman or premium course of your choice.</p>
         </div>
+        <div className="rounded-xl border border-violet-200 bg-violet-50 px-4 py-3 text-xs font-semibold text-violet-800 dark:border-violet-900 dark:bg-violet-950 dark:text-violet-200">
+          <span className="block text-[10px] uppercase tracking-wider opacity-70">How it works</span>
+          1. Pick course · 2. Enter file title · 3. Click <span className="underline">Add file</span>
+        </div>
         <div className="relative">
           <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
           <input
