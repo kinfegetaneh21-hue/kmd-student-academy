@@ -60,7 +60,7 @@ export default function CourseDetailPage() {
   const toggleModule = (mid) => setOpenModule((m) => ({ ...m, [mid]: !m[mid] }));
 
   const play = (l) => {
-    if (locked) return;
+    if (locked || !l) return;
     setActiveLesson(l);
     if (user) markLessonWatched(user.id, course.id, l.id);
   };
@@ -97,13 +97,15 @@ export default function CourseDetailPage() {
               ) : (
                 <button
                   onClick={() => {
-                    if (!isAuthenticated) return;
+                    if (!isAuthenticated || !lessons[0]) return;
                     enroll(user.id, course.id);
                     play(lessons[0]);
                   }}
-                  className="btn-primary"
+                  disabled={lessons.length === 0}
+                  className="btn-primary disabled:cursor-not-allowed disabled:opacity-60"
                 >
-                  <PlayCircle className="h-4 w-4" /> Start learning
+                  <PlayCircle className="h-4 w-4" />{' '}
+                  {lessons.length === 0 ? 'No lessons yet' : 'Start learning'}
                 </button>
               )}
               <Link to="/courses" className="btn-secondary !bg-white/10 !text-white !ring-white/20 hover:!bg-white/20">
