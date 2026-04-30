@@ -106,7 +106,7 @@ export default function ManageCoursesPage() {
         </table>
       </div>
 
-      <Modal open={open} onClose={() => setOpen(false)} title={editing?.id?.startsWith('c-') ? 'New course' : 'Edit course'}>
+      <Modal open={open} onClose={() => setOpen(false)} title={editing && !courses.find((c) => c.id === editing.id) ? 'New course' : 'Edit course'}>
         {editing && (
           <div className="grid gap-4 sm:grid-cols-2">
             <label className="block sm:col-span-2">

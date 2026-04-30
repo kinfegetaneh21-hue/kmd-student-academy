@@ -9,7 +9,7 @@ const mockStudents = Array.from({ length: 24 }).map((_, i) => ({
   year: ['freshman', 'y2', 'y3', 'y4', 'y5', 'y6', 'y7'][i % 7],
   plan: ['freshman', 'standard', 'advanced', 'department'][i % 4],
   status: i % 7 === 0 ? 'suspended' : 'active',
-  joined: '2024-1' + ((i % 9) + 1) + '-0' + ((i % 9) + 1),
+  joined: `2024-${String((i % 12) + 1).padStart(2, '0')}-${String((i % 28) + 1).padStart(2, '0')}`,
 }));
 
 export default function ManageStudentsPage() {
