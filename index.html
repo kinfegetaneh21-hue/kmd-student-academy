@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="KMD Student Academy — a modern Ethiopian LMS for freshman (free) and 2nd–7th year (premium) university students." />
+    <meta name="theme-color" content="#1f6bf0" />
+    <title>KMD Student Academy — Learn Smarter</title>
+    <script>
+      // Initialize theme before React mounts to avoid flash.
+      try {
+        const t = localStorage.getItem('kmd-theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (t === 'dark' || (!t && prefersDark)) document.documentElement.classList.add('dark');
+      } catch (e) {}
+    </script>
+  </head>
+  <body class="h-full">
+    <div id="root" class="h-full"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
